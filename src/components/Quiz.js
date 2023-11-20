@@ -7,7 +7,17 @@ function Quiz() {
     const [optionChosen, setOptionChosen] = useState("");
 
     const chooseOption = (option) => {
-        setOptionChosen(option)
+        setOptionChosen(option);
+    }
+
+    const nextQuestion = () => {
+        if(Questions[currentQuestion].asnwer === optionChosen) {
+            console.log("Correct");
+        } else {
+            console.log("incorrect");
+        }
+        
+        setCurrentQuestion(currentQuestion+1);
     }
     return(
         <div className="Quiz">
@@ -18,7 +28,7 @@ function Quiz() {
                 <button onClick={() => {chooseOption('optionC')}} >{Questions[currentQuestion].optionC} </button>
                 <button onClick={() => {chooseOption('optionD')}} >{Questions[currentQuestion].optionD} </button>
             </div>
-            {optionChosen}
+            <button onClick={nextQuestion}>Next Question</button>
         </div>
     )
 }
