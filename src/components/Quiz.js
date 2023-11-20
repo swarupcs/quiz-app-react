@@ -2,7 +2,12 @@ import "../App.css";
 import { Questions } from "../helpers/Questions";
 import { useState } from "react";
 
+import { useContext } from "react";
+import { GameStateContext } from "../helpers/Context";
+
 function Quiz() {
+    const { score, setScore } = useContext(GameStateContext);
+
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [optionChosen, setOptionChosen] = useState("");
 
@@ -13,10 +18,11 @@ function Quiz() {
     const nextQuestion = () => {
         if(Questions[currentQuestion].asnwer === optionChosen) {
             console.log("Correct");
+            setScore(score+1);
         } else {
             console.log("incorrect");
         }
-        
+
         setCurrentQuestion(currentQuestion+1);
     }
     return(
@@ -28,6 +34,7 @@ function Quiz() {
                 <button onClick={() => {chooseOption('optionC')}} >{Questions[currentQuestion].optionC} </button>
                 <button onClick={() => {chooseOption('optionD')}} >{Questions[currentQuestion].optionD} </button>
             </div>
+            {score}
             <button onClick={nextQuestion}>Next Question</button>
         </div>
     )
