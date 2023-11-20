@@ -3,6 +3,7 @@ import Menu from './components/Menu';
 import Quiz from './components/Quiz';
 import { useState } from 'react';
 import {GameStateContext} from "./helpers/Context"
+import EndScreen from './components/EndScreen';
 
 
 // ['menu', 'playing', 'finished']
@@ -20,6 +21,7 @@ function App() {
         <GameStateContext.Provider value={{gameState, setGameState, userName, setUserName, score, setScore}}>
         {gameState === "menu" && <Menu/> }
         {gameState === "playing" && <Quiz/>}
+        {gameState === "finished" && <EndScreen/>}
         </GameStateContext.Provider>
         
     </div>
