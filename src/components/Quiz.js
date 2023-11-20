@@ -1,10 +1,10 @@
 import "../App.css";
-
+import { Questions } from "../helpers/Questions";
 
 function Quiz() {
     return(
-        <div>
-            <h1>Quiz</h1>
+        <div className="Quiz">
+            {Questions[1].prompt}
         </div>
     )
 }
